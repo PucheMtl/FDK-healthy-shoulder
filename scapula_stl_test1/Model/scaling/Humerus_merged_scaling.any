@@ -1,0 +1,168 @@
+ AnyFolder Humerus_merged = {
+   
+   AnyFunTransform3DLin Transform = {
+    ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
+    Offset = {0,0,0};
+    PreTransforms = {&.RBFTransform, &.ReverseTransform};
+  };
+    
+    AnyFolder Landmarks = 
+    {
+      AnyFolder SourceAffine = 
+      {
+        AnyInputXML XMLObject = 
+        {
+          FileName = "SourceHumerusLeftLocal_picked_points_Affine.pp";
+        };
+        AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+        AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+        AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+        AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+        AnyFloat Points = {xptr0',yptr0',zptr0'}';        
+      };
+      
+      AnyFolder SourceAffineE = 
+      {
+        AnyInputXML XMLObject = 
+        {
+          FileName = "SourceHumerusLeftLocal_picked_points+.pp";
+        };
+        AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+        AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+        AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+        AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+        AnyFloat Points = {xptr0',yptr0',zptr0'}';        
+      };
+
+      
+      AnyFolder TargetAffine = 
+      {
+        AnyInputXML XMLObject = 
+        {
+          FileName = "humerus_Tony_without_pin_postprocess111_picked_points_Affine.pp";
+        };
+        AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")) *0.001;
+        AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")) *0.001;
+        AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*")) *0.001;
+        AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+        AnyFloat Points = {xptr0',yptr0',zptr0'}';   
+      }; 
+      
+      AnyFolder SourceRBF = 
+      {
+        AnyInputXML XMLObject = 
+        {
+          FileName = "SourceHumerusLeftLocal_picked_points.pp";
+        };
+        AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+        AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+        AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+        AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+        AnyFloat Points = {xptr0',yptr0',zptr0'}';        
+      };
+      
+      AnyFolder TargetRBF = 
+      {
+        AnyInputXML XMLObject = 
+        {
+          FileName = "humerus_Tony_without_pin_postprocess111_picked_points.pp";
+        };
+        AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")) *0.001;
+        AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")) *0.001;
+        AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*")) *0.001;
+        AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+        AnyFloat Points = {xptr0',yptr0',zptr0'}';   
+      }; 
+AnyFolder TargetAffineE = 
+{
+AnyFloat Points=
+{{0.146398, 0.0043704, -0.190426},
+{0.112095, -0.0287061, -0.100098},
+{0.101476, -0.0192659, -0.106476},
+{0.108534, -0.0126381, -0.120455},
+{0.103801, 0.00759646, -0.112821},
+{0.128539, -0.0310617, -0.0879435},
+{0.13577, -0.0234524, -0.0838733},
+{0.140552, 0.00799058, -0.0893566},
+{0.0963159, 0.0069718, -0.104098},
+{0.103009, -0.0038916, -0.0814231},
+{0.11271, 0.00474538, -0.0760244},
+{0.127625, 0.0101415, -0.0763894},
+{0.132567, 0.0208224, -0.0949808},
+{0.116389, 0.0255659, -0.0981595},
+{0.105026, 0.0148298, -0.0867519},
+{0.113782, -0.00374522, -0.154275},
+{0.122505, 0.0275578, -0.287023},
+{0.144046, 0.0164395, -0.287034},
+{0.137149, -0.0128613, -0.152031},
+{0.142013, 0.0093664, -0.100682},
+{0.12739, -0.00114309, -0.0739605},
+{0.121238, 0.0211828, -0.113136},
+{0.1180679, 0.05328467, -0.3874858},
+{0.1114703, 0.03997635, -0.4034003},
+{0.1179567, 0.02900402, -0.4024412},
+{0.1184468, 0.02015193, -0.4022861},
+{0.1189858, 0.01648356, -0.4024391},
+{0.1231703, 0.003578367, -0.4042813},
+{0.1255074, -0.004683815, -0.4040407},
+{0.1384917, -0.02166693, -0.3863637},
+{0.1217359, 0.004923781, -0.3836269},
+{0.1270699, -0.01168089, -0.3822065},
+{0.1164228, 0.02469103, -0.3844642},
+{0.1259544, 0.04353601, -0.3595554},
+{0.1344234, -0.003496516, -0.3588144},
+{0.1364233, 0.002721712, -0.4023369},
+{0.1302718, 0.01767538, -0.3988717},
+{0.1287208, 0.03755495, -0.3984717},
+{0.1278783, 0.01627723, -0.3813802},
+{0.1412162, -0.01773933, -0.3903234},
+{0.1244719, -0.005927442, -0.22008}};
+    };
+  };//LandMarks
+    
+      AnyFunTransform3DLin2 AffineTransform =
+      {
+        Points0 = ..Landmarks.SourceAffine.Points; 
+        Points1 = ..Landmarks.TargetAffine.Points;
+        
+        
+        Mode = VTK_LANDMARK_AFFINE;
+      };
+      
+      AnyFunTransform3DLin2 ReverseTransform = {
+    Points0 = .AffineTransform.Points1;
+    Points1 = .AffineTransform.Points0;
+    Mode = VTK_LANDMARK_RIGIDBODY;
+  };
+      
+      AnyFunTransform3DRBF RBFTransform = 
+      {
+        PreTransforms = {&.AffineTransform};
+        RBFDef = 
+        {
+          Type = RBF_Triharmonic;
+          Param = 1;
+        };
+        
+        Points1 = ..Landmarks.TargetAffineE.Points;
+        Points0 = ..Landmarks.SourceRBF.Points;
+        PointNames =..Landmarks.SourceRBF.PointNames;
+        
+        //       Points1 = ..Landmarks.TargetRBF.//Points;
+//       Points0 = ..Landmarks.SourceRBF.Points;
+//       PointNames =..Landmarks.SourceRBF.PointNames;
+
+        
+        BoundingBox = 
+        {
+          Type = BB_Cartesian;
+          ScaleXYZ = {2, 2, 2};
+          DivisionFactorXYZ = 5*{1, 1, 1};
+        };
+        BoundingBoxOnOff = On;
+      };
+    
+    
+    
+  }; // MyModel
+  
