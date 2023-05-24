@@ -1,0 +1,82 @@
+// Todo: Write a small description of your model here
+
+Main = {
+  
+  // The actual body model goes in this folder
+  AnyFolder MyModel = {
+    
+    AnyFolder Landmarks = 
+    {
+      AnyFolder Source = 
+      {
+        AnyInputXML XMLObject = 
+        {
+          FileName = "humerus_generique_picked_points.pp";
+        };
+        AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
+        AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
+        AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*"));
+        AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+        AnyFloat Points = {xptr0',yptr0',zptr0'}';        
+      };
+      
+      AnyFolder Target = 
+      {
+        AnyInputXML XMLObject = 
+        {
+          FileName = "PJ116_humerus_A_avg_center_picked_points.pp";
+        };
+        AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")) *0.001;
+        AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")) *0.001;
+        AnyFloat zptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".z_*")) *0.001;
+        AnyString PointNames = Obj2Str(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".name")) ;
+        AnyFloat Points = {xptr0',yptr0',zptr0'}';   
+      };    
+    };//LandMarks
+    
+    // Global Reference Frame
+    AnyFixedRefFrame GlobalRef = {
+      
+      
+      AnySeg SourceHumerus = 
+      {
+        Mass = 0; Jii = {0, 0, 0};
+                AnyDrawSurf Surface = 
+                {
+                  FileName = "humerus_generique.stl";
+        //          AnyFunTransform3D &ref = ..AffineTransform;
+                };
+      };
+      
+      AnySeg TargetHumerus = 
+      {
+        Mass = 0; Jii = {0, 0, 0};
+        AnyDrawSurf Surface = 
+        {
+          FileName = "PJ116_humerus_A_avg_center.stl";
+          AnyFunTransform3D &ref = ..AffineTransform;
+          ScaleXYZ = 0.001*{1, 1, 1};
+          RGB = {0,0,1};
+        };
+      };
+       AnyFunTransform3DLin2 AffineTransform =
+      {
+        Points0 = ..Landmarks.Target.Points; 
+        Points1 = ..Landmarks.Source.Points;
+        
+        
+        Mode = VTK_LANDMARK_AFFINE;
+      };
+      
+    };  // Global reference frame
+    
+    
+  }; // MyModel
+  
+  // The study: Operations to be performed on the model
+  AnyBodyStudy MyStudy = {
+    AnyFolder &Model = .MyModel;
+    Gravity = {0.0, -9.81, 0.0};
+  };
+  
+};  // Main
