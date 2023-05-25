@@ -5,4 +5,11 @@ Right.Scapula = {
   #include "Scapula_merged_Scaling.any"
   AnyFunTransform3D &ScaleFunction = Scapula_merged.Transform;
 };
+
+#define CUSTOM_SCALING_Right_Humerus
+Right.Humerus = {
+  #include "Humerus_merged_Scaling.any"
+  AnyFunTransform3D &ScaleFunction = Humerus_merged.Transform;
+};
+
 };

@@ -17,7 +17,8 @@
 
 /*------------- SCALING CONFIGURATION SECTION --------------------*/
 // Actual scaling law
- #define BM_SCALING _SCALING_STANDARD_
+ #define BM_CUSTOM_SCALING_Right_Scapula
+#define BM_CUSTOM_SCALING_Right_Humerus
  //--------------- END OF SCALING CONFIGURATION -------------------
 
 #include "CustomScaling.any"
