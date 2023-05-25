@@ -8,7 +8,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.AnatomicalFrame = {
     ///Surface geometry of the scapula implant
     AnySurfSTL ScapulaImplant = 
     {
-      FileName = "../Input/PJ116_scapula_A_avg_center.stl";
+      FileName = "../Input/scapula/PJ116_scapula_A_avg_center.stl";
 //      ScaleXYZ = 0.7*1.0*{1.0, 1.0, 1.0};
      ScaleXYZ =0.001*{1.0, 1.0, 1.0};
       AnyDrawSurf DrwSurfScap = {
@@ -32,7 +32,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.AnatomicalFrame = {
     ///Surface geometry of the scapula implant
     AnySurfSTL HumerusImplant = 
     {
-      FileName = "../Input/PJ116_humerus_A_avg_center.stl";
+      FileName = "../Input/humerus/PJ116_humerus_A_avg_center.stl";
 //      ScaleXYZ = 0.7*1.0*{1.0, 1.0, 1.0};
      ScaleXYZ =0.001*{1.0, 1.0, 1.0};
       AnyDrawSurf DrwSurfScap = {

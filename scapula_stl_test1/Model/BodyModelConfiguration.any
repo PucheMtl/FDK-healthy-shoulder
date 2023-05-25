@@ -14,3 +14,11 @@
 #define BM_LEG_LEFT OFF
 #define BM_LEG_RIGHT OFF
 #define BM_ARM_LEFT OFF
+
+/*------------- SCALING CONFIGURATION SECTION --------------------*/
+// Actual scaling law
+ #define BM_CUSTOM_SCALING_Right_Scapula
+#define BM_CUSTOM_SCALING_Right_Humerus
+ //--------------- END OF SCALING CONFIGURATION -------------------
+
+#include "CustomScaling.any"

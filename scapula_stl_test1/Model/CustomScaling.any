@@ -1,0 +1,15 @@
+// This is a place holder for the inclusion of custom scaling laws
+Main.HumanModel.Scaling.GeometricalScaling = {
+#define CUSTOM_SCALING_Right_Scapula
+Right.Scapula = {
+  #include "Scapula_merged_Scaling.any"
+  AnyFunTransform3D &ScaleFunction = Scapula_merged.Transform;
+};
+
+#define CUSTOM_SCALING_Right_Humerus
+Right.Humerus = {
+  #include "Humerus_merged_Scaling.any"
+  AnyFunTransform3D &ScaleFunction = Humerus_merged.Transform;
+};
+
+};
