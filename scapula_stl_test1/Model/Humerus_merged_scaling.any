@@ -115,12 +115,12 @@ AnyFolder Humerus_merged = {
         AnySurfSTL TargetSurf = {
           FileName = "PJ116_humerus_A_avg_center.stl";
           ScaleXYZ = 0.001*{1, 1, 1};
-           AnyDrawSurf Surface = 
-        {
-          FileName = "PJ116_humerus_A_avg_center.stl";
-          ScaleXYZ = 0.001*{1, 1, 1};
-//          Opacity = 0.3;
-        };
+//           AnyDrawSurf Surface = 
+//        {
+//          FileName = "PJ116_humerus_A_avg_center.stl";
+//          ScaleXYZ = 0.001*{1, 1, 1};
+////          Opacity = 0.3;
+//        };
         };
       };
       
