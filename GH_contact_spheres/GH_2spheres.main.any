@@ -29,6 +29,45 @@ Main =
       // Additional reactions which are required to run the inverse dynamics analysis
       #include "Model\Reactions.any"
     };
+    
+    //Definition de l'articulation GH comme 2 spheres
+    AnyFolder GH_2spheres =
+    {
+      //Definition des parametres des spheres
+      AnyVar rh = 0.0236;
+      AnyVar rg = 0.0316;
+      
+      // Define a sphere representing the center of humeral head. The supraspinatus and deltoid muscles        
+      // will wrap about this sphere.
+      Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh ={
+      AnySurfSphere HH_sphere = 
+        {
+          Radius = Main.Model.GH_2spheres.rh;
+          AnyDrawParamSurf drw = {
+            RGB = {0, 0, 1};
+            Opacity = 0.5;
+            
+          };
+        };
+        
+        Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh = {
+          AnyRefNode Glenoid_sphere_center ={
+          sRel = {0.008,0.005,0.0}; //a definir depuis le code python
+          AnySurfSphere Glenoid_sphere = 
+        {
+          Radius = Main.Model.GH_2spheres.rg;
+          AnyDrawParamSurf drw = {
+            RGB = {0, 0.6, 0.6};
+            Opacity = 0.5;   
+          };
+        };
+      };
+          
+        };
+        
+      };
+    };
+    
   };
  
   AnyBodyStudy Study = 
