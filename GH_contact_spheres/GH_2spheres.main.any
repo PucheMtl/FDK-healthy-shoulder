@@ -17,15 +17,7 @@ Main =
     // A link to the human model
     AnyFolder &BodyModel = .HumanModel.BodyModel;
     AnyFolder &DefaultMannequinDrivers = .HumanModel.DefaultMannequinDrivers;
-    
-     // Implants defines and positions the stl surfaces of the scapula and humerus.
-//    #include "Model\Implants.any"
-    
-      // In this file, the bone of the scapula and humerus are replaced.
-//    #include "Model/BoneExchange.any"
-    
-    // This file implements the implant contact forces.
-//    #include "Model/ContactForces.any"
+
  
     // Environment files are used to include objects surrounding human
     #include "Model\Environment.any"   
@@ -42,18 +34,6 @@ Main =
   AnyBodyStudy Study = 
   {
     AnyFolder &Model = .Model;  
-    
-//    MechObjectExclude = arrcat(
-//  ObjSearch("Main.HumanModel.BodyModel.Right.Leg.Seg.Thigh.HipJoint","AnyMechObject"),
-//  ObjSearchRecursive("Main.HumanModel.BodyModel.Right.Leg.Jnt.Hip","*","AnyMechObject"),
-//  ObjSearchRecursive("Main.Model.ModelEnvironmentConnection.JointsAndDrivers.JntDriverRightLegTD","Hip*","AnyMechObject")
-//);
-    
-//MechObjectExclude = arrcat(
-//ObjSearch("Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh","AnyMechObject"),
-//ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")
-////  ObjSearchRecursive("Main.Model.ModelEnvironmentConnection.JointsAndDrivers.JntDriverRightLegTD","Hip*","AnyMechObject")
-//);
 
     Gravity={0.0, -9.81, 0.0};
     nStep = 11;
