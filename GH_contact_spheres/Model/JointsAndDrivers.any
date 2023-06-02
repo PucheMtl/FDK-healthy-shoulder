@@ -5,6 +5,11 @@ AnyFolder Joints =
 
 AnyFolder Drivers = 
 {
-  
+  AnyKinEqSimpleDriver GHDriverRight={
+    AnyKinMeasure& ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
+    DriverPos = {0};
+    DriverVel = {90*pi/180};
+    Reaction.Type = {Off};  
+  };
 };
 
