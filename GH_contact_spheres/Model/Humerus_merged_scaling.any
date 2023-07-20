@@ -1,4 +1,4 @@
-AnyFolder Scapula_merged = {
+AnyFolder Humerus_merged = {
   
   AnyFunTransform3DLin Transform = {
     ScaleMat = {{1,0,0},{0,1,0},{0,0,1}};
@@ -12,7 +12,7 @@ AnyFolder Scapula_merged = {
     {
       AnyInputXML XMLObject = 
       {
-        FileName = "scapula_generique_picked_points_affine.pp";
+        FileName = "humerus_generique_picked_points_affine.pp";
       };
       AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
       AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
@@ -25,7 +25,7 @@ AnyFolder Scapula_merged = {
     {
       AnyInputXML XMLObject = 
       {
-        FileName = "PJ116_scapula_A_avg_center_picked_points_affine.pp";
+        FileName = "PJ116_humerus_A_avg_center_picked_points_affine.pp";
       };
       AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")) *0.001;
       AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")) *0.001;
@@ -39,7 +39,7 @@ AnyFolder Scapula_merged = {
     {
       AnyInputXML XMLObject = 
       {
-        FileName = "scapula_generique_picked_points.pp";
+        FileName = "humerus_generique_picked_points.pp";
       };
       AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*"));
       AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*"));
@@ -52,7 +52,7 @@ AnyFolder Scapula_merged = {
     {
       AnyInputXML XMLObject = 
       {
-        FileName = "PJ116_scapula_A_avg_center_picked_points.pp";
+        FileName = "PJ116_humerus_A_avg_center_picked_points.pp";
       };
       AnyFloat xptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".x_*")) *0.001;
       AnyFloat yptr0 = Obj2Num(ObjSelect("XMLObject.Contents.PickedPoints.point*.active", "==1", ".y_*")) *0.001;
@@ -109,20 +109,19 @@ AnyFolder Scapula_merged = {
       RBFDef.Type = RBF_Triharmonic;
       AnyFixedRefFrame Input = {
         AnySurfSTL SourceSurf = {
-          FileName = "scapula_generique.stl";
+          FileName = "humerus_generique.stl";
           ScaleXYZ = {1, 1, 1};
         };
         AnySurfSTL TargetSurf = {
-          FileName = "PJ116_scapula_A_avg_center.stl";
+          FileName = "PJ116_humerus_A_avg_center.stl";
           ScaleXYZ = 0.001*{1, 1, 1};
-           AnyDrawSurf Surface = 
-        {
-          FileName = "PJ116_scapula_A_avg_center.stl";
-          ScaleXYZ = 0.001*{1, 1, 1};
-//          Opacity = 0.3;
+//           AnyDrawSurf Surface = 
+//        {
+//          FileName = "PJ116_humerus_A_avg_center.stl";
+//          ScaleXYZ = 0.001*{1, 1, 1};
+////          Opacity = 0.3;
+//        };
         };
-        };
-        
       };
       
       SurfaceObjects0 = {&Input.SourceSurf};
