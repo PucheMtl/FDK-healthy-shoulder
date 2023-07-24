@@ -71,16 +71,20 @@ Main = {
       {
         Mass = 0; Jii = {0, 0, 0};
         
-//        AnyDrawSurf Surface = 
-//        {
-//          FileName = "scapula_generique.stl";
-//        };
+        AnyDrawSurf Surface = 
+        {
+          FileName = "scapula_generique.stl";
+          RGB = {0,1,0};
+          Opacity = 0.3;
+        };
         
-        //        AnyDrawSurf SurfaceMorphed = 
-        //        {
-        //          FileName = "SourceScapulaLeftLocal.stl";
-        //          AnyFunTransform3D &ref = ..AffineTransform;
-        //        };
+//                AnyDrawSurf SurfaceMorphed = 
+//                {
+//                  FileName = "scapula_generique.stl";
+//                  AnyFunTransform3D &ref = ..AffineTransform;
+//                  RGB = {0,1,0};
+//          Opacity = 0.3;
+//                };
         
 //        AnyDrawSurf SurfaceMorphedRBF = 
 //        {

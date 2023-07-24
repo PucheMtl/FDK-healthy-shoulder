@@ -31,7 +31,7 @@ HumanModel.Mannequin = {
       
       GlenohumeralFlexion =-0; 
       GlenohumeralAbduction = 10; 
-      GlenohumeralExternalRotation = 0; 
+      GlenohumeralExternalRotation = 5; 
       
       ElbowFlexion = 0.01; 
       ElbowPronation = -20.0;

@@ -1,0 +1,145 @@
+#include "libdef.any"
+
+Main = 
+{  
+  
+  // Body Model configuration:
+  #include "Model/BodyModelConfiguration.any"
+  
+  // Using your own Mannequin.any file in the Model folder of your model
+  #include "Model\Mannequin.any"
+  
+  // Include default human model
+  #include "<ANYBODY_PATH_BODY>\HumanModel.any"
+  
+  AnyFolder Model = 
+  {
+    // A link to the human model
+    AnyFolder &BodyModel = .HumanModel.BodyModel;
+    AnyFolder &DefaultMannequinDrivers = .HumanModel.DefaultMannequinDrivers;
+    
+    
+    // Environment files are used to include objects surrounding human
+    #include "Model\Environment.any"   
+    
+    AnyFolder ModelEnvironmentConnection = 
+    {
+      //'JointsAndDrivers.any' file can include all kinematic constraints such as joints and drivers
+      #include "Model\JointsAndDrivers.any"
+      // Additional reactions which are required to run the inverse dynamics analysis
+      #include "Model\Reactions.any"
+    };
+        
+    //Definition de l'articulation GH comme 2 spheres
+    AnyFolder GH_2spheres =
+    {
+      //Definition des parametres des spheres
+      AnyVar rh = 0.0236;
+      AnyVar rg = 0.0316;
+      
+      // Define a sphere representing the center of humeral head. The supraspinatus and deltoid muscles        
+      // will wrap about this sphere.
+      Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh ={
+        AnySurfSphere HH_sphere = 
+        {
+          Radius = Main.Model.GH_2spheres.rh;
+          AnyDrawParamSurf drw = {
+            RGB = {0, 0, 1};
+            Opacity = 0.5;
+          };
+        };
+        
+        Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh = {
+          AnyRefNode Glenoid_sphere_center ={
+            sRel = {0.008,0.005,0.0}; //a definir depuis le code python
+            AnySurfSphere Glenoid_sphere = 
+            {
+              Radius = Main.Model.GH_2spheres.rg;
+              AnyDrawParamSurf drw = {
+                RGB = {0, 0.6, 0.6};
+                Opacity = 0.5;   
+              };
+            };
+          }; 
+        };
+      };
+      
+      // GH joint defined as a length constraint on a pline through both centers
+      Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
+        AnyKinEqSimpleDriver GHJoint_2spheres = {
+          AnyKinPLine pline = {
+            AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.Glenoid_sphere_center;
+            AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
+          };
+          DriverPos = {Main.Model.GH_2spheres.rg - Main.Model.GH_2spheres.rh};
+          DriverVel = {0.0};
+        };
+      };
+      
+        // FDK driver to represent the two possible movements of the humeral head
+    AnyKinEqSimpleDriver gh_2spheres = {
+      AnyKinLinear lin = {
+        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.Glenoid_sphere_center;
+        AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
+      };
+      MeasureOrganizer = {1,2};
+      DriverPos = {0,0};
+      DriverVel = {0,0};
+      CType = {ForceDep, ForceDep};
+      Reaction.Type = {Off, Off};
+    };
+    
+    };
+    
+    //     Define springs in the shoulder, simulating the effect of passive elements
+     AnyForce ShoulderPE = {   
+      AnyKinPLine pline = 
+      {
+        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.O_deltoideus_lateral_part_4;
+        AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
+        AnyDrawPLine drw = {
+          Thickness = 0.005;
+          RGB = {0,1,0};
+        };
+      };
+//      F={-0.0};
+       F = {iffun(gtfun (0, pline.Pos[0]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ;
+//      F = {-1000*Main.Model.GH_2spheres.gh_2spheres.Pos[1]};
+      //F = {iffun(gtfun (0, Main.MyModel.gh.Pos[1]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ;     
+    };
+    
+     // Shoulder driver- abduction.
+//    AnyKinEqSimpleDriver ShoulderDriver = {
+//      AnyKinRotational rot = {
+//        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula;
+//        AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus;
+//        Type = RotVector;
+//      };
+//      DriverPos = {0.0, 0.0, 0.0};
+//      DriverVel = {0.0, 0.0, pi/2};     
+//      
+//    };
+    
+  };
+  
+  AnyBodyStudy Study = 
+  {
+    AnyFolder &Model = .Model;  
+    
+    Gravity={0.0, -9.81, 0.0};
+    nStep = 100;
+    // Overdeterminate solver is needed while using the 
+    // soft default mannequin drivers.
+    Kinematics.SolverType = KinSolOverDeterminate;
+    InitialConditions.SolverType = Kinematics.SolverType ;
+    
+      //exclure le GHJoint a 3 DOF
+    MechObjectExclude = arrcat(
+  ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject"));
+    
+  };
+  
+  #include "Model\RunAppSequence.any"
+}; //Main
+
+
