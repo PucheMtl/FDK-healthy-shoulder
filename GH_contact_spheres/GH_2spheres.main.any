@@ -29,7 +29,7 @@ Main =
       // Additional reactions which are required to run the inverse dynamics analysis
       #include "Model\Reactions.any"
     };
-    
+        
     //Definition de l'articulation GH comme 2 spheres
     AnyFolder GH_2spheres =
     {
@@ -71,7 +71,7 @@ Main =
             AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.Glenoid_sphere_center;
             AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
           };
-          DriverPos = {0.04 - 0.03};
+          DriverPos = {Main.Model.GH_2spheres.rg - Main.Model.GH_2spheres.rh};
           DriverVel = {0.0};
         };
       };
@@ -82,7 +82,7 @@ Main =
         AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.Glenoid_sphere_center;
         AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
       };
-      MeasureOrganizer = {0,2};
+      MeasureOrganizer = {1,2};
       DriverPos = {0,0};
       DriverVel = {0,0};
       CType = {ForceDep, ForceDep};
@@ -95,14 +95,15 @@ Main =
      AnyForce ShoulderPE = {   
       AnyKinPLine pline = 
       {
-        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.I_deltoideus_lateral_part_1;
+        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.O_deltoideus_lateral_part_4;
         AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
         AnyDrawPLine drw = {
           Thickness = 0.005;
           RGB = {0,1,0};
         };
       };
-      F={-0.0};
+//      F={-0.0};
+       F = {iffun(gtfun (0, pline.Pos[0]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ;
 //      F = {-1000*Main.Model.GH_2spheres.gh_2spheres.Pos[1]};
       //F = {iffun(gtfun (0, Main.MyModel.gh.Pos[1]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ;     
     };
