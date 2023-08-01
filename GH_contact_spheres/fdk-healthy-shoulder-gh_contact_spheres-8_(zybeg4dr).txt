@@ -1,0 +1,83 @@
+########### MACRO #############
+load "GH_2spheres.main.any"
+classoperation Main.Model.ShoulderPE.F "Set Value" --value="4"
+operation Main.RunApplication
+run
+classoperation Main.Study.Output.Abscissa.t "Dump"
+classoperation Main.Study.Output.Model.ShoulderPE.pline.Pos "Dump"
+classoperation Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_3.Activity "Dump"
+classoperation Main.Study.Output "Save data" --type="Deep" --file="output.anydata.h5"
+
+######### OUTPUT LOG ##########
+
+AnyBody Console Application
+AnyBodyCon.exe version : 7. 4. 4. 8907 (64-bit version) 
+Build : 19446.50760
+Copyright (c) 1999 - 2023 AnyBody Technology A/S
+
+Current path: C:\Users\Margaux\OneDrive - ETS\projet recherche\07. Anybody_project_sauvegarde\FDK-healthy-shoulder\GH_contact_spheres
+
+#### Macro command > load "GH_2spheres.main.any"
+Loading  Main  :  "C:\Users\Margaux\OneDrive - ETS\projet recherche\07. Anybody_project_sauvegarde\FDK-healthy-shoulder\GH_contact_spheres\GH_2spheres.main.any"
+Scanning...
+Parsing...
+Constructing model tree...
+Linking identifiers...
+Evaluating constants...
+Configuring model...
+Evaluating model...
+Loaded successfully.
+Elapsed Time : 2.866000
+
+#### Macro command > classoperation Main.Model.ShoulderPE.F "Set Value" --value="4"
+
+#### Macro command > operation Main.RunApplication
+
+#### Macro command > run
+
+***************************************************************************************
+0) Operation Sequence: (Operation: Main.RunApplication): 
+0.0) Operation Sequence: (Operation: Main.HumanModel.Calibration.CalibrationSequence): 
+0.0.0) Dummy operation: (Operation: Main.HumanModel.Calibration.CalibrationSequence.PlaceHolderOpr): 
+1.0) InverseDynamics (Operation: Main.Study.InverseDynamics): 
+1.0.0) PreOperation (Operation: Main.Study.InverseDynamics.PreOperation): 
+1.0.0.0) InitialConditions (Operation: Main.Study.InitialConditions): 
+1.0.0.0) ...Design variables have been updated.
+1.0.0.1) ...Load-time positions have been re-established.
+WARNING(OBJ.MCH.KIN6) :   C:\Program Files\AnyBody Technology\AnyBody.7.4\AMMR\Body\AAUHuman\Arm\Interface.any(215)  :   'GHRot'  :  Close to singular position  :  Orientation close to Gimbal Lock, i.e., first and third axis of rotation being parallel
+1.0.0.2) ...Kinematic analysis completed.
+WARNING(OBJ.MCH.KIN7) :   C:\Program Files\AnyBody Technology\AnyBody.7.4\AMMR\Body\AAUHuman\Arm\Muscle.any(1620)  :   'Triceps_LH_1.SPLine'  :  Penetration of surface :  'Surf' :  Via-point ''O_Triceps_LH_1'' on ''SPLine'' is located below the wrapping surface''Surf'
+1.0.0.3) ...Dependent variables are fully updated.
+1.0) Inverse dynamic analysis...
+1.29) ...Inverse dynamic analysis completed
+2.0) save (Operation: Main.RunApplication.save): 
+
+#### Macro command : save(1:1)> classoperation Main.Study.Output "Save data" --type=Deep --file="C:\Users\Margaux\OneDrive - ETS\projet recherche\07. Anybody_project_sauvegarde\FDK-healthy-shoulder\GH_contact_spheres/Output/GH_2spheres.main.anydata.h5"
+Main.Study.Output :  Saving output data file...
+||==============================Saving================================
+0%100%... saving finished, but getting warning from HDF write.
+ERROR(OBJ.FILE1) :   Problem with file :  C:\Users\Margaux\OneDrive - ETS\projet recherche\07. Anybody_project_sauvegarde\FDK-healthy-shoulder\GH_contact_spheres\Output\GH_2spheres.main.anydata.h5 :  Unable to open output file C:\Users\Margaux\OneDrive - ETS\projet recherche\07. Anybody_project_sauvegarde\FDK-healthy-shoulder\GH_contact_spheres\Output\GH_2spheres.main.anydata.h5. Operation skipped
+
+***************************************************************************************
+
+#### Macro command > classoperation Main.Study.Output.Abscissa.t "Dump"
+Main.Study.Output.Abscissa.t = {0.0, 0.034482758620689655, 0.068965517241379309, 0.10344827586206896, 0.13793103448275862, 0.17241379310344829, 0.20689655172413793, 0.2413793103448276, 0.27586206896551724, 0.31034482758620691, 0.34482758620689657, 0.37931034482758619, 0.41379310344827586, 0.44827586206896552, 0.48275862068965519, 0.51724137931034486, 0.55172413793103448, 0.58620689655172409, 0.62068965517241381, 0.65517241379310343, 0.68965517241379315, 0.72413793103448276, 0.75862068965517238, 0.7931034482758621, 0.82758620689655171, 0.86206896551724133, 0.89655172413793105, 0.93103448275862066, 0.96551724137931039, 1.0};
+
+#### Macro command > classoperation Main.Study.Output.Model.ShoulderPE.pline.Pos "Dump"
+Main.Study.Output.Model.ShoulderPE.pline.Pos = {{0.049926447100317788}, {0.04995695465453201}, {0.049985082946718169}, {0.050012397938345859}, {0.050039667386265342}, {0.050061396235074919}, {0.050077617835527985}, {0.050080572308748961}, {0.050086595078247621}, {0.050093757541018427}, {0.050092679411592365}, {0.050091718651931572}, {0.050091820601859453}, {0.050092335513567378}, {0.050093386727838508}, {0.050095383864970193}, {0.050097911253481113}, {0.050100904050772097}, {0.05010414474818338}, {0.050108111857555593}, {0.050112446778934332}, {0.050117129870924586}, {0.050121178522097999}, {0.050125178854587477}, {0.050129628448808611}, {0.050133681868243359}, {0.050193842387074604}, {0.050251810577889224}, {0.050300119502466448}, {0.050316064354461017}};
+
+#### Macro command > classoperation Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_3.Activity "Dump"
+Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_3.Activity = 0.12598246371811059;
+
+#### Macro command > classoperation Main.Study.Output "Save data" --type="Deep" --file="output.anydata.h5"
+Main.Study.Output :  Saving output data file...
+||==============================Saving================================
+0%100%... saving finished, but getting warning from HDF write.
+ERROR(OBJ.FILE1) :   Problem with file :  C:\Users\Margaux\OneDrive - ETS\projet recherche\07. Anybody_project_sauvegarde\FDK-healthy-shoulder\GH_contact_spheres\output.anydata.h5 :  Unable to open output file C:\Users\Margaux\OneDrive - ETS\projet recherche\07. Anybody_project_sauvegarde\FDK-healthy-shoulder\GH_contact_spheres\output.anydata.h5. Operation skipped
+
+#### Macro command > exit
+
+Closing model...
+Saving modified values...
+Deleting loaded model...
+...Model deleted.

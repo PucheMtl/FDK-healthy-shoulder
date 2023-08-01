@@ -64,7 +64,6 @@ Main = {
         Points0 = ..Landmarks.Target.Points; 
         Points1 = ..Landmarks.Source.Points;
         
-        
         Mode = VTK_LANDMARK_AFFINE;
       };
       

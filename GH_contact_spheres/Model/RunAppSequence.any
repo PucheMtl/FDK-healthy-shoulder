@@ -1,6 +1,6 @@
  // Switch to define an automatic save of results to the Output folder
 #ifndef AutoSaveOption 
-#define AutoSaveOption 0
+#define AutoSaveOption 1
 #endif
 
 /**Execute this operation to run the model in the intended operation sequence.  

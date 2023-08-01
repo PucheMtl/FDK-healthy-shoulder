@@ -33,7 +33,7 @@ Main =
     //Definition de l'articulation GH comme 2 spheres
     AnyFolder GH_2spheres =
     {
-      //Definition des parametres des spheres
+      //Definition des parametres des spheres; depuis SSM de Leen
       AnyVar rh = 0.0236;
       AnyVar rg = 0.0316;
       
@@ -51,7 +51,7 @@ Main =
         
         Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh = {
           AnyRefNode Glenoid_sphere_center ={
-            sRel = {0.008,0.005,0.0}; //a definir depuis le code python
+            sRel = {0.00,0.00,0.0}; //a definir depuis le code python
             AnySurfSphere Glenoid_sphere = 
             {
               Radius = Main.Model.GH_2spheres.rg;
@@ -95,30 +95,18 @@ Main =
      AnyForce ShoulderPE = {   
       AnyKinPLine pline = 
       {
-        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.O_deltoideus_lateral_part_4;
+        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.O_deltoideus_lateral_part_2;
         AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
         AnyDrawPLine drw = {
-          Thickness = 0.005;
           RGB = {0,1,0};
         };
       };
-//      F={-0.0};
-       F = {iffun(gtfun (0, pline.Pos[0]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ;
-//      F = {-1000*Main.Model.GH_2spheres.gh_2spheres.Pos[1]};
-      //F = {iffun(gtfun (0, Main.MyModel.gh.Pos[1]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ;     
+      
+     F = {10.0};   
+//     F = {iffun(gtfun (0, pline.Pos[0]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ; //DGA1033 foonctionne
+//     F = {5.62-1.68*pline.Pos[0]-1.12168*(pline.Pos[0])^2+0.9*(pline.Pos[0])^3-0.01*(pline.Pos[0])^4}; // Lauranne these
+//     F = {-10.75+7.787*pline.Pos[0]-4.391*(pline.Pos[0])^2+0.08637*(pline.Pos[0])^4}; // Lauranne modele Lio  
     };
-    
-     // Shoulder driver- abduction.
-//    AnyKinEqSimpleDriver ShoulderDriver = {
-//      AnyKinRotational rot = {
-//        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula;
-//        AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus;
-//        Type = RotVector;
-//      };
-//      DriverPos = {0.0, 0.0, 0.0};
-//      DriverVel = {0.0, 0.0, pi/2};     
-//      
-//    };
     
   };
   
@@ -127,17 +115,19 @@ Main =
     AnyFolder &Model = .Model;  
     
     Gravity={0.0, -9.81, 0.0};
-    nStep = 100;
+    nStep = 30;
     // Overdeterminate solver is needed while using the 
     // soft default mannequin drivers.
     Kinematics.SolverType = KinSolOverDeterminate;
     InitialConditions.SolverType = Kinematics.SolverType ;
+    InverseDynamics.ForceDepKinOnOff=On;
     
       //exclure le GHJoint a 3 DOF
     MechObjectExclude = arrcat(
   ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject"));
     
-  };
+
+  }; // end of study
   
   #include "Model\RunAppSequence.any"
 }; //Main
