@@ -125,6 +125,9 @@ Main =
     InitialConditions.SolverType = Kinematics.SolverType ;
     InverseDynamics.ForceDepKinOnOff=On;
     
+    AnyVar JointAngle =  Main.HumanModel.BodyModel.Right.ShoulderArm.InterfaceFolder.GlenohumeralAbduction.Pos[0]*180/pi  ;    
+
+    
     //exclure le GHJoint a 3 DOF
     MechObjectExclude = arrcat(
     ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject"));

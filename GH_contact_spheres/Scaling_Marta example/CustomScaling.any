@@ -1,8 +1,0 @@
-// This is a place holder for the inclusion of custom scaling laws
-Main.HumanModel.Scaling.GeometricalScaling = {
-#define CUSTOM_SCALING_Left_Scapula
-Left.Scapula = {
-  #include "Scapula_merged_Scaling.any"
-  AnyFunTransform3D &ScaleFunction = Scapula_merged.Transform;
-};
-};
