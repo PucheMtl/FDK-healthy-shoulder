@@ -1,0 +1,44 @@
+ // Shortcuts
+AnyFolder &Jnt = Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt;
+AnyFolder &Seg = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg;
+AnyFolder &Mus = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus;
+
+
+
+
+
+// Save in a *.txt file
+AnyOutputFile FileOut = {
+  FileName = .OutputFileName + ".txt";
+  
+  NumberFormat.Digits = 6;
+  
+  // Header
+  Header = {
+    TitleSectionOnOff = On;
+    ConstSectionOnOff = On;
+    VarSectionOnOff = On;
+    ColumnNamesOnOff = On;  //swicth the column names on/off
+    LinePrefix = "";
+    ShortenNamesOnOff = Off;
+    
+  };     
+  //-----------------SIMULATIONS PARAMETERS----------------------------
+  // Input Values 
+  AnyVar nstep = Main.Study.nStep;
+  
+  AnyVar rg = Main.Model.GH_2spheres.rg;
+  AnyVar rh = Main.Model.GH_2spheres.rh;
+  
+  AnyVec3 Ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.O_deltoideus_lateral_part_2.r;
+  AnyVec3 Ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh.r;
+  
+  AnyFloat SpringForce = Main.Model.ShoulderPE.F;
+  
+
+};
+
+
+
+
+
