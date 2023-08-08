@@ -1,0 +1,31 @@
+/* INPUTVARIABLES.ANY
+Variables and parameters to modify at each simulation.
+*/
+
+AnyFolder InputVariables = {
+  
+  /* -- FILES/FOLDERS NAMES --
+  m_ResultFile :   Name for results file (saved as .txt or .h5)
+  m_ResultFolder : Name for folder results. !!Must be created on computer before!!
+  m_ResultPath :   Complete path to the "NameFolder" folder
+  WARNING:    Be sure that the m_ResultFolder variable refers to an existing folder on your computer !!
+  ----------------------------- */
+  //  #define m_ResultFile "Results_17_07_2015_version_neutre"
+  //  #define m_ResultFolder "Ceraver\"
+  //  #define m_ResultPath "C:\Users\p0077871\Documents\PRe\Results\Analyse Version\"
+  
+  
+  AnyFolder MorphotypeParameters = 
+  {
+     AnyVar rh = 0.0236; 
+     AnyVar rg = 0.0316;
+  };
+  
+  AnyFolder FDK = 
+  {
+    AnyVar k = 10.00; 
+
+  };
+  
+};
+

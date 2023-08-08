@@ -6,6 +6,9 @@ Main =
   // Body Model configuration:
   #include "Model/BodyModelConfiguration.any"
   
+  // Input Parameters. To modify at each simulation
+  #include "Input/InputVariables.any"
+  
   // Using your own Mannequin.any file in the Model folder of your model
   #include "Model\Mannequin.any"
   
@@ -34,9 +37,11 @@ Main =
     AnyFolder GH_2spheres =
     {
       //Definition des parametres des spheres; depuis SSM de Leen
-      AnyVar rh = 0.0236;
-      AnyVar rg = 0.0316;
-      #define ForceF 0.0
+      AnyFloat rh = Main.InputVariables.MorphotypeParameters.rh;
+      AnyFloat rg = Main.InputVariables.MorphotypeParameters.rg;
+      
+      #define ForceF 0.0 // depuis Input variables + pas avec def, parametre avec des ki similaire Lauranne 
+
       
       
       
@@ -54,7 +59,7 @@ Main =
         
         Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh = {
           AnyRefNode Glenoid_sphere_center ={
-            sRel = {0.00,0.00,0.0}; //a definir depuis le code python
+            sRel = {0.00,0.00,0.0}; //a definir depuis le code python sphere fitting, a modif dans Input variable
             AnySurfSphere Glenoid_sphere = 
             {
               Radius = Main.Model.GH_2spheres.rg;
