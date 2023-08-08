@@ -27,8 +27,8 @@ AnyOutputFile FileOut = {
   // Input Values 
   AnyVar nstep = Main.Study.nStep;
   
-  AnyVar rg = Main.Model.GH_2spheres.rg;
-  AnyVar rh = Main.Model.GH_2spheres.rh;
+  AnyVar rg = Main.InputVariables.MorphotypeParameters.rh; 
+  AnyVar rh = Main.InputVariables.MorphotypeParameters.rg;
   
   AnyVec3 Ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.O_deltoideus_lateral_part_2.r;
   AnyVec3 Ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh.r;
