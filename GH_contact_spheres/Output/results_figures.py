@@ -370,10 +370,11 @@ def Graph(data,Variable_x,Variable_y,FigureTitle,Composantes = False,Compare = F
 
 # Nom du fichier
 Results = LoadResultsh5('GH_2spheres.main_F=10')
+Results = LoadResultsh5('GH_2spheres.main_F=15')
 
 Studies = {}
 Studies["Study 1"] = LoadResultsh5('GH_2spheres.main_F=10')
-Studies["Study 2"] = LoadResultsh5('GH_2spheres.main_F=10')
+Studies["Study 2"] = LoadResultsh5('GH_2spheres.main_F=15')
 
 
 # # importe le nom de tous les fichiers dans le dossier

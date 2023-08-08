@@ -36,7 +36,7 @@ Main =
       //Definition des parametres des spheres; depuis SSM de Leen
       AnyVar rh = 0.0236;
       AnyVar rg = 0.0316;
-      #define ForceF 15.0
+      #define ForceF 0.0
       
       
       
@@ -132,10 +132,13 @@ F = {ForceF};
   
   AnyString OutputFileName =ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + "_F=" + strval(ForceF);
   
+  AnyVar JointAngle =  Main.HumanModel.BodyModel.Right.ShoulderArm.InterfaceFolder.GlenohumeralAbduction.Pos[0]*180/pi  ;    
+
   
   
   #include "Model\AnyOutputFile.any"
   }; // end of study
+  
   #include "Model\RunAppSequence.any"
   
 
