@@ -32,7 +32,7 @@ Main =
       // Additional reactions which are required to run the inverse dynamics analysis
       #include "Model\Reactions.any"
     };
-        
+    
     //Definition de l'articulation GH comme 2 spheres
     AnyFolder GH_2spheres =
     {
@@ -40,8 +40,8 @@ Main =
       AnyFloat rh = Main.InputVariables.MorphotypeParameters.rh;
       AnyFloat rg = Main.InputVariables.MorphotypeParameters.rg;
       
-      #define ForceF 0.0 // depuis Input variables + pas avec def, parametre avec des ki similaire Lauranne 
-
+//      #define ForceF 0.0 // depuis Input variables + pas avec def, parametre avec des ki similaire Lauranne 
+      
       
       
       
@@ -84,23 +84,23 @@ Main =
         };
       };
       
-        // FDK driver to represent the two possible movements of the humeral head
-    AnyKinEqSimpleDriver gh_2spheres = {
-      AnyKinLinear lin = {
-        AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.Glenoid_sphere_center;
-        AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
+      // FDK driver to represent the two possible movements of the humeral head
+      AnyKinEqSimpleDriver gh_2spheres = {
+        AnyKinLinear lin = {
+          AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.Glenoid_sphere_center;
+          AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
+        };
+        MeasureOrganizer = {1,2};
+        DriverPos = {0,0};
+        DriverVel = {0,0};
+        CType = {ForceDep, ForceDep};
+        Reaction.Type = {Off, Off};
       };
-      MeasureOrganizer = {1,2};
-      DriverPos = {0,0};
-      DriverVel = {0,0};
-      CType = {ForceDep, ForceDep};
-      Reaction.Type = {Off, Off};
-    };
-    
+      
     };
     
     //     Define springs in the shoulder, simulating the effect of passive elements
-     AnyForce ShoulderPE = {   
+    AnyForce ShoulderPE = {   
       AnyKinPLine pline = 
       {
         AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.O_deltoideus_lateral_part_2;
@@ -110,10 +110,13 @@ Main =
         };
       };
       
-F = {ForceF};   
-//     F = {iffun(gtfun (0, pline.Pos[0]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ; //DGA1033 foonctionne
-//     F = {5.62-1.68*pline.Pos[0]-1.12168*(pline.Pos[0])^2+0.9*(pline.Pos[0])^3-0.01*(pline.Pos[0])^4}; // Lauranne these
-//     F = {-10.75+7.787*pline.Pos[0]-4.391*(pline.Pos[0])^2+0.08637*(pline.Pos[0])^4}; // Lauranne modele Lio  
+      AnyFloat k = Main.InputVariables.FDK.k;
+      
+      F = {k};   
+      
+      //     F = {iffun(gtfun (0, pline.Pos[0]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ; //DGA1033 foonctionne
+      //     F = {5.62-1.68*pline.Pos[0]-1.12168*(pline.Pos[0])^2+0.9*(pline.Pos[0])^3-0.01*(pline.Pos[0])^4}; // Lauranne these
+      //     F = {-10.75+7.787*pline.Pos[0]-4.391*(pline.Pos[0])^2+0.08637*(pline.Pos[0])^4}; // Lauranne modele Lio  
     };
     
   };
@@ -130,26 +133,28 @@ F = {ForceF};
     InitialConditions.SolverType = Kinematics.SolverType ;
     InverseDynamics.ForceDepKinOnOff=On;
     
-      //exclure le GHJoint a 3 DOF
+    //exclure le GHJoint a 3 DOF
     MechObjectExclude = arrcat(
-  ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject"));
+    ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject"));
     
-  
-  AnyString OutputFileName =ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + "_F=" + strval(ForceF);
-  
-  AnyVar JointAngle =  Main.HumanModel.BodyModel.Right.ShoulderArm.InterfaceFolder.GlenohumeralAbduction.Pos[0]*180/pi  ;    
-
-  
-  
-  #include "Model\AnyOutputFile.any"
+    
+//    AnyString OutputFileName =ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + "_F=" + strval(ForceF);
+    AnyString OutputFileName =ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + "_F=";
+    
+    AnyVar JointAngle =  Main.HumanModel.BodyModel.Right.ShoulderArm.InterfaceFolder.GlenohumeralAbduction.Pos[0]*180/pi  ;    
+    
+    
+    
+    #include "Model\AnyOutputFile.any"
   }; // end of study
   
   #include "Model\RunAppSequence.any"
   
-
   
-
+  
+  
   
 }; //Main
+
 
 

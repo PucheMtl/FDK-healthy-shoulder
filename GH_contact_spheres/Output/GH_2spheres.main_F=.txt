@@ -1,0 +1,72 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Study
+Operation: Main.Study.InverseDynamics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Study.FileOut.UpdData = 2
+Main.Study.FileOut.FileName = "..\Output\GH_2spheres.main_F=.txt"
+Main.Study.FileOut.NumberFormat.Digits = 6
+Main.Study.FileOut.NumberFormat.Width = 23
+Main.Study.FileOut.NumberFormat.Style = ScientificNumber
+Main.Study.FileOut.NumberFormat.FormatStr = "%23.6e"
+Main.Study.FileOut.Values = 
+Main.Study.FileOut.Search = 
+Main.Study.FileOut.Format = 0
+Main.Study.FileOut.SepSign = ","
+Main.Study.FileOut.SepSpaceAutoOnOff = On
+Main.Study.FileOut.LineSepSign = ""
+Main.Study.FileOut.Header.TitleSectionOnOff = On
+Main.Study.FileOut.Header.ConstSectionOnOff = On
+Main.Study.FileOut.Header.ConstSectionSaveOptionsOnOff = On
+Main.Study.FileOut.Header.VarSectionOnOff = On
+Main.Study.FileOut.Header.ColumnNamesOnOff = On
+Main.Study.FileOut.Header.LinePrefix = ""
+Main.Study.FileOut.Header.ShortenNamesOnOff = Off
+Main.Study.FileOut.Header.ColumnIDString = "col"
+Main.Study.FileOut.ConstSectionSaveOptionsOnOff = On
+Main.Study.FileOut.SuppressTimeColumnOnOff = Off
+Main.Study.FileOut.nstep =            3.000000e+01
+Main.Study.FileOut.rg =            2.360000e-02
+Main.Study.FileOut.rh =            3.160000e-02
+Main.Study.FileOut.SpringForce = {           1.000000e+01}
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Study.t
+col1  Main.Study.FileOut.Ins[0]
+col2  Main.Study.FileOut.Ins[1]
+col3  Main.Study.FileOut.Ins[2]
+col4  Main.Study.FileOut.Ori[0]
+col5  Main.Study.FileOut.Ori[1]
+col6  Main.Study.FileOut.Ori[2]
+----------------------------------------------------------
+Main.Study.t,Main.Study.FileOut.Ins[0],Main.Study.FileOut.Ins[1],Main.Study.FileOut.Ins[2],Main.Study.FileOut.Ori[0],Main.Study.FileOut.Ori[1],Main.Study.FileOut.Ori[2]
+           0.000000e+00,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.144297e-02,           1.611214e+00,           1.939889e-01
+           3.448276e-02,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.142860e-02,           1.611192e+00,           1.940023e-01
+           6.896552e-02,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.141614e-02,           1.611167e+00,           1.940076e-01
+           1.034483e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.140471e-02,           1.611141e+00,           1.940101e-01
+           1.379310e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.139238e-02,           1.611115e+00,           1.940141e-01
+           1.724138e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.138293e-02,           1.611094e+00,           1.940163e-01
+           2.068966e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137641e-02,           1.611079e+00,           1.940167e-01
+           2.413793e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137654e-02,           1.611076e+00,           1.940138e-01
+           2.758621e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137541e-02,           1.611070e+00,           1.940110e-01
+           3.103448e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137374e-02,           1.611063e+00,           1.940085e-01
+           3.448276e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137379e-02,           1.611064e+00,           1.940092e-01
+           3.793103e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137382e-02,           1.611065e+00,           1.940101e-01
+           4.137931e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137337e-02,           1.611065e+00,           1.940110e-01
+           4.482759e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137322e-02,           1.611065e+00,           1.940109e-01
+           4.827586e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137343e-02,           1.611064e+00,           1.940095e-01
+           5.172414e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137307e-02,           1.611062e+00,           1.940085e-01
+           5.517241e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137228e-02,           1.611059e+00,           1.940080e-01
+           5.862069e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137133e-02,           1.611057e+00,           1.940075e-01
+           6.206897e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137044e-02,           1.611054e+00,           1.940067e-01
+           6.551724e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.137016e-02,           1.611050e+00,           1.940039e-01
+           6.896552e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.136875e-02,           1.611046e+00,           1.940031e-01
+           7.241379e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.136702e-02,           1.611041e+00,           1.940029e-01
+           7.586207e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.136499e-02,           1.611037e+00,           1.940038e-01
+           7.931034e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.136294e-02,           1.611034e+00,           1.940048e-01
+           8.275862e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.136073e-02,           1.611029e+00,           1.940058e-01
+           8.620690e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.135851e-02,           1.611026e+00,           1.940072e-01
+           8.965517e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.135473e-02,           1.610969e+00,           1.939616e-01
+           9.310345e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.135063e-02,           1.610915e+00,           1.939171e-01
+           9.655172e-01,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.134654e-02,           1.610870e+00,           1.938805e-01
+           1.000000e+00,          -5.001620e-02,           1.660194e+00,           1.985830e-01,          -4.134416e-02,           1.610855e+00,           1.938706e-01
