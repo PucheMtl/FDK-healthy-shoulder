@@ -19,7 +19,7 @@
 // Actual scaling law
 #define BM_CUSTOM_SCALING_Right_Scapula
 #define BM_CUSTOM_SCALING_Right_Humerus
-#include "CustomScaling.any"
+//#include "CustomScaling.any"
  //--------------- END OF SCALING CONFIGURATION -------------------
 
 
