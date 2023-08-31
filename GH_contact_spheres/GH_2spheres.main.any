@@ -99,6 +99,16 @@ Main =
       
     };
     
+    //Definition de la mesure de HHT dans le repere de la scapula (similaire  pline?)
+    AnyFolder KinematicMeasures = {
+      AnyKinLinear HumeralHeadTranslations = 
+      {
+        AnyRefFrame &GlobalRef = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh;
+        AnyRefFrame &GHhumerus = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
+      };
+
+  }; // KinematicsMeasures
+    
     //     Define springs in the shoulder, simulating the effect of passive elements
     AnyForce ShoulderPE = {   
       AnyKinPLine pline = 
