@@ -23,7 +23,7 @@ AnyFolder InputVariables = {
   
   AnyFolder FDK = 
   {
-    AnyVar k = 10000.00; 
+    AnyVar k = 0.00; 
     
   };
   

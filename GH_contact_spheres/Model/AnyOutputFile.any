@@ -33,7 +33,7 @@ AnyOutputFile FileOut = {
   AnyVec3 Ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.O_deltoideus_lateral_part_2.r;
   AnyVec3 Ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh.r;
   
-  AnyFloat SpringForce = Main.Model.ShoulderPE.F;
+  AnyFloat SpringForce = Main.Model.GH_2spheres.ShoulderPE.F;
   
 
 };

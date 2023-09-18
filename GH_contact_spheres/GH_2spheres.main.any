@@ -56,7 +56,8 @@ Main =
             Opacity = 0.5;
           };
         };
-        
+        };
+
         Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh = {
           AnyRefNode Glenoid_sphere_center ={
             sRel = {0.00,0.00,0.0}; //a definir depuis le code python sphere fitting, a modif dans Input variable
@@ -70,13 +71,13 @@ Main =
             };
           }; 
         };
-      };
+      
       
       // GH joint defined as a length constraint on a pline through both centers
       Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
         AnyKinEqSimpleDriver GHJoint_2spheres = {
           AnyKinPLine pline = {
-            AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.Glenoid_sphere_center;
+            AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh;
             AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
           };
           DriverPos = {Main.Model.GH_2spheres.rg - Main.Model.GH_2spheres.rh};
@@ -87,7 +88,7 @@ Main =
       // FDK driver to represent the two possible movements of the humeral head
       AnyKinEqSimpleDriver gh_2spheres = {
         AnyKinLinear lin = {
-          AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.Glenoid_sphere_center;
+          AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh;
           AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
         };
         MeasureOrganizer = {1,2};
@@ -97,21 +98,21 @@ Main =
         Reaction.Type = {Off, Off};
       };
       
-    };
+//    };
     
-    //Definition de la mesure de HHT dans le repere de la scapula (similaire  pline?)
-    AnyFolder KinematicMeasures = {
-      AnyKinLinear HumeralHeadTranslations = 
-      {
-        AnyRefFrame &GlobalRef = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh;
-        AnyRefFrame &GHhumerus = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
-      };
+//    //Definition de la mesure de HHT dans le repere de la scapula (similaire  pline?)
+//    AnyFolder KinematicMeasures = {
+//      AnyKinLinear HumeralHeadTranslations = 
+//      {
+//        AnyRefFrame &GlobalRef = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh;
+//        AnyRefFrame &GHhumerus = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
+//      };
 
-  }; // KinematicsMeasures
+//  }; // KinematicsMeasures
     
     //     Define springs in the shoulder, simulating the effect of passive elements
     AnyForce ShoulderPE = {   
-      AnyKinPLine pline = 
+      AnyKinLinear lin = 
       {
         AnyRefFrame &ori = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh; //position au repos du centre de la tete humeral dans le repere de la scpaula
         AnyRefFrame &ins = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.gh;
@@ -120,14 +121,26 @@ Main =
         };
       };
       
-      AnyFloat k = Main.InputVariables.FDK.k;
-      
-      F = {k};   
+//      AnyFloat k = Main.InputVariables.FDK.k;
+    
+      AnyVar k0 = 10.75;   
+      AnyVar k1 = -7.787;  
+      AnyVar k2 = 4.391;
+      AnyVar k3 = 0 ;
+      AnyVar k4 = -0.08637 ; 
+      AnyVar kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components
+   
+    
+       F={ 
+      -10.75, -10.75, -10.75
+    };   
       
       //     F = {iffun(gtfun (0, pline.Pos[0]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ; //DGA1033 foonctionne
       //     F = {5.62-1.68*pline.Pos[0]-1.12168*(pline.Pos[0])^2+0.9*(pline.Pos[0])^3-0.01*(pline.Pos[0])^4}; // Lauranne these
       //     F = {-10.75+7.787*pline.Pos[0]-4.391*(pline.Pos[0])^2+0.08637*(pline.Pos[0])^4}; // Lauranne modele Lio  
     };
+    
+    }; //end off GH_2spheres
     
     // Hides the old GHReactions lines and nodes
     Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine1.line.Visible = Off;
