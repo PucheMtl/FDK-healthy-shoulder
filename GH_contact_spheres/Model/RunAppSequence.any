@@ -17,8 +17,17 @@ AnyOperationSequence RunApplication = {
   #if AutoSaveOption 
   /// This operation saves the output of the study to an h5 file in the Output folder
   AnyOperationMacro save = {
-//        MacroStr={ "classoperation Main.Study.Output " + strquote("Save data") + " --type=Deep" + " --file="+ strquote(ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + "_F=" + strval(ForceF) + ".anydata.h5")};
-         MacroStr={ "classoperation Main.Study.Output " + strquote("Save data") + " --type=Deep" + " --file="+ strquote(ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + "_F=" + ".anydata.h5")};      };
+    //        MacroStr={ "classoperation Main.Study.Output " + strquote("Save data") + " --type=Deep" + " --file="+ strquote(ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + "_F=" + strval(ForceF) + ".anydata.h5")};
+    MacroStr={ "classoperation Main.Study.Output " + strquote("Save data") + " --type=Deep" + " --file="+ strquote(ANYBODY_PATH_OUTPUT + ANYBODY_NAME_MAINFILE + "_F=" + ".anydata.h5")};      };
   #endif
 };  
 
+AnyOperationSequence Loadh5AndReplay = {
+  AnyOperationMacro LoadData ={
+//        MacroStr = {"classoperation Main.Study.Output " + strquote("Load data") + "--file=" + strquote(ANYBODY_PATH_OUTPUT +  FileToLoadName + ".anydata.h5")};
+//    MacroStr = {"classoperation Main.Study.Output " + strquote("Load data") + "FDK3D_F=-10.75.anydata.h5"};
+    MacroStr = {"classoperation Main.Study.Output " + strquote("Load data")};
+  };
+  AnyOperation &Replay=Main.Study.Replay;
+  
+};
