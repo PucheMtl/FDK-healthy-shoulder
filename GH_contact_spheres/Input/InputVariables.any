@@ -14,7 +14,9 @@ AnyFolder InputVariables = {
   //  #define m_ResultFolder "Ceraver\"
   //  #define m_ResultPath "C:\Users\p0077871\Documents\PRe\Results\Analyse Version\"
   
-  
+
+    
+    
   AnyFolder MorphotypeParameters = 
   {
      AnyVar rh = 0.0236; 

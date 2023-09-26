@@ -36,6 +36,8 @@ Main =
       #include "Model\Reactions.any"
     };
     
+
+    
     //Definition de l'articulation GH comme 2 spheres
     AnyFolder GH_2spheres =
     {
@@ -135,7 +137,9 @@ Main =
    
     
        F={ 
-      -10.75, -10.75, -10.75
+         -10.75*Main.Model.GH_2spheres.gh_2spheres.lin.Pos[0], 
+       -10.75*Main.Model.GH_2spheres.gh_2spheres.lin.Pos[1], 
+       -10.75*Main.Model.GH_2spheres.gh_2spheres.lin.Pos[2]
     };   
       
       //     F = {iffun(gtfun (0, pline.Pos[0]), -1000*(pline.Pos[0]), -1000*(pline.Pos[0]))} ; //DGA1033 foonctionne
@@ -171,10 +175,10 @@ Main =
     AnyFolder &Model = .Model;  
     
     Gravity={0.0, -9.81, 0.0};
-    nStep = 30;
+    nStep = 60;
     // Overdeterminate solver is needed while using the 
     // soft default mannequin drivers.
-    Kinematics.SolverType = KinSolOverDeterminate;
+//    Kinematics.SolverType = KinSolOverDeterminate;
     InitialConditions.SolverType = Kinematics.SolverType ;
     InverseDynamics.ForceDepKinOnOff=On;
     
