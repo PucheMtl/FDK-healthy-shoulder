@@ -31,14 +31,15 @@ HumanModel.Mannequin = {
       
       GlenohumeralFlexion =-0; 
       GlenohumeralAbduction = 10; 
-      GlenohumeralExternalRotation = 5; 
+      GlenohumeralExternalRotation = 5; //valeure initiale
+//      GlenohumeralExternalRotation = -110;
       
       ElbowFlexion = 0.01; 
       ElbowPronation = -20.0;
       
       WristFlexion =0;
       WristAbduction =0;
-            
+      
       //Leg
       HipFlexion = 0.0; 
       HipAbduction = 5.0; 
@@ -193,7 +194,7 @@ HumanModel.Mannequin = {
       
       AnklePlantarFlexion =0.0; 
       SubTalarEversion =0.0; 
-
+      
       //Detail Hand
       Finger1 ={
         CMCDeviation=0;
@@ -290,11 +291,12 @@ HumanModel.Mannequin = {
         PIPFlexion=0;
         DIPFlexion=0;
       };       
-
+      
     };
   };
   
 };
+
 
 
 
